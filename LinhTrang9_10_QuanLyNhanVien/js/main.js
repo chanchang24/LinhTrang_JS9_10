@@ -25,7 +25,7 @@ var hienThiDanhSachNV = function(arr){
                     <td>${item.total}</td>
                     <td>${item.grade}</td>
                     <td>
-                        <button type="button" onclick="XoaNhanVien('${item.grade}')" class="btn btn-danger">Xóa</button>
+                        <button type="button" onclick="XoaNhanVien('${item.username}')" class="btn btn-danger">Xóa</button>
                         <button type="button" class="btn btn-primary">Cập nhật</button>
                     </td>
                 </tr>
@@ -45,15 +45,16 @@ var getLocalStorage = function() {
 }
 getLocalStorage();
 //Xoa nhan vien
-function XoaNhanVien(grade){
-    dsnv.Remove(grade);
+function XoaNhanVien(username){
+    dsnv.Remove(username);
     hienThiDanhSachNV(dsnv.arr);
     setLocalStorage();
 }
 //Tim nhan vien theo loai
 getEle('btnTimNV').addEventListener('click', function (){
-    var searchGrade = getEle('searchName').value;
-    dsnv.SearchGrade(searchGrade);
+    var sGrade = getEle('searchName').value;
+    dsnv.SearchGrade(sGrade,dsnv.arr);
+    // hienThiDanhSachNV(.mangTimKiem);
 
 })
 //Them nhan vien
@@ -80,8 +81,8 @@ getEle('btnThemNV').addEventListener('click', function () {
                 && valid.checkEmail(email,'tbEmail','Vui lòng nhập đúng định dạng');
     isValid &= valid.kiemTraRong(pass,'tbMatKhau','Password không được để trống')
                 && valid.checkPassword(pass,'tbMatKhau','Vui lòng nhập 6-10 ký tự chứa ít nhất 1 ký tự số, 1 ký tự in hoa, 1 ký tự đặc biệt');
-    // isValid &= valid.kiemTraRong(date,'tbNgay','Ngày làm không được để trống')
-    //             && valid.checkDate(date,'tbNgay','Vui lòng nhập theo dạng MM/dd/yyyy');  
+    isValid &= valid.kiemTraRong(date,'tbNgay','Ngày làm không được để trống')
+                && valid.checkDate(date,'tbNgay','Vui lòng nhập theo dạng MM/dd/yyyy');  
     isValid &= valid.kiemTraRong(salary,'tbLuongCB','Lương không được để trống')
                 && valid.checkSalary(salary,'tbLuongCB','Vui lòng nhập lương 1000000-20000000');
     isValid &= valid.checkPosition(position,'tbChucVu','Vui lòng  chọn chức vụ hợp lệ (Sếp, Trưởng Phòng, Nhân Viên) ');

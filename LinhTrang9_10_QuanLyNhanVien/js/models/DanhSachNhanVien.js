@@ -1,18 +1,20 @@
-function DanhSachNhanVien(){
+function DanhSachNhanVien() {
     this.arr = [];
-    this.themDanhSachNV = function(NhanVien){
+    this.themDanhSachNV = function (NhanVien) {
         this.arr.push(NhanVien);
     }
 }
-DanhSachNhanVien.prototype.SearchGrade = function(grade) {
-      this.arr.findIndex(function(item) {
-        return grade === item.grade;
-    }); 
+DanhSachNhanVien.prototype.SearchIndex = function (username) {
+    return this.arr.findIndex(function (item) {
+        return username === item.username;
+    });
 }
 
-DanhSachNhanVien.prototype.Remove = function(grade) {
-        var viTri = this.SearchGrade(grade);
-        if (viTri !== -1) {
-            this.arr.splice(viTri, 1);
-        }
+DanhSachNhanVien.prototype.Remove = function (username) {
+    var viTri = this.SearchIndex(username);
+    if (viTri !== -1) {
+        this.arr.splice(viTri, 1);
+    }
 }
+
+

@@ -50,13 +50,7 @@ function XoaNhanVien(username){
     hienThiDanhSachNV(dsnv.arr);
     setLocalStorage();
 }
-//Tim nhan vien theo loai
-getEle('btnTimNV').addEventListener('click', function (){
-    var sGrade = getEle('searchName').value;
-    dsnv.SearchGrade(sGrade,dsnv.arr);
-    // hienThiDanhSachNV(.mangTimKiem);
 
-})
 //Them nhan vien
 getEle('btnThemNV').addEventListener('click', function () {
     
@@ -95,3 +89,4 @@ getEle('btnThemNV').addEventListener('click', function () {
     setLocalStorage();
     // getEle('newForm').reset();
 })
+
